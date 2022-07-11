@@ -132,7 +132,162 @@ typedef struct Com_Config {
  * -------------------- Separator --------------------
  * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  * Declare Com_Init()
+ * @param       config containing the initialization data for COM.
+ * @return      void
+ * @brief       initiate COM Module and prepare for the future action
 */
-void Com_Init(
+void Com_Init (
     const Com_ConfigType* config
-)
+);
+
+/*
+ * Supported:
+ * @[SWS_Com_00130]
+ * @[SWS_Com_00129] 
+ * 
+ * Unsupported:
+ * 
+ * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------- Separator --------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ * Declare Com_DeInit()
+ * @param       void
+ * @return      void
+ * @brief       Stop any communication, Put the COM into NOT INITIALIZED STATE
+*/
+void Com_DeInit (
+    void
+);
+
+/*
+ * Supported:
+ * @[SWS_Com_91001]
+ * 
+ * Unsupported:
+ * 
+ * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------- Separator --------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ * TODO: 
+ *      - bool Type should be supported at C_Mock.h
+ *      - uint16
+ * @Aeron
+ * 
+ * Declare Com_IpduGroupStart()
+ * @param       IpduGroupId     I-PDU Group Id
+ *              initialize      if it is true, all pdu shall be (re-)initialized before group started
+ * @return      void
+ * @brief       start IPDU Group then IPDU will behave like what we configured
+*/
+void Com_IpduGroupStart (
+    Com_IpduGroupIdType IpduGroupId,
+    bool initialize
+);
+
+/*
+ * Supported:
+ * @[SWS_Com_91002]
+ * 
+ * Unsupported:
+ * 
+ * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------- Separator --------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ * TODO: 
+ *      - uint16
+ * @Aeron
+ * 
+ * Declare Com_IpduGroupStop()
+ * @param       IpduGroupId     I-PDU Group Id
+ * @return      void
+ * @brief       stop IPDU Group which means IPDU will stop running
+*/
+void Com_IpduGroupStop (
+    Com_IpduGroupIdType IpduGroupId
+);
+
+
+/*
+ * Supported:
+ * @[SWS_Com_91004]
+ * 
+ * Unsupported:
+ * 
+ * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------- Separator --------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ * TODO: 
+ *      - uint16
+ * @Aeron
+ * 
+ * Declare Com_EnableReceptionDM()
+ * @param       IpduGroupId     I-PDU Group Id
+ * @return      void
+ * @brief       enable reception DM for IPDU within IPDU Group
+*/
+void Com_EnableReceptionDM (
+    Com_IpduGroupIdType IpduGroupId
+);
+
+/*
+ * Supported:
+ * @[SWS_Com_91003]
+ * 
+ * Unsupported:
+ * 
+ * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------- Separator --------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ * TODO: 
+ *      - uint16
+ * @Aeron
+ * 
+ * Declare Com_DisableReceptionDM()
+ * @param       IpduGroupId     I-PDU Group Id
+ * @return      void
+ * @brief       disable reception DM for IPDU within IPDU Group
+*/
+void Com_DisableReceptionDM (
+    Com_IpduGroupIdType IpduGroupId
+);
+
+/*
+ * Supported:
+ * @[SWS_Com_00194]
+ * 
+ * Unsupported:
+ * 
+ * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------- Separator --------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ * Declare Com_GetStatus()
+ * @param       void
+ * @return      Com_StatusType indicates the State of COM
+ * @brief       indicates the State of COM at the time in which a invocation to this func
+*/
+Com_StatusType Com_GetStatus (
+    void
+);
+
+
+/*
+ * Supported:
+ * @[SWS_Com_00426]
+ * 
+ * Unsupported:
+ * 
+ * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------- Separator --------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ * TODO: 
+ *      - Std_VersionInfoType should be supported at ./mock/autosar_mock/StandardTypes.h
+ * @Aeron
+ * 
+ * Declare Com_GetVersionInfo()
+ * @param       versioninfo parameter out, info will be store into the place at which the pointer point 
+ * @return      void
+ * @brief       indicates the version information of COM
+*/
+void Com_GetVersionInfo (
+    Std_VersionInfoType *versioninfo
+);
